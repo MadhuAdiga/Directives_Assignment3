@@ -1,0 +1,18 @@
+<div class="container container-fluid">
+    <h2>Toggling display using Directive myUnless</h2><br>
+
+    <button class="btn btn-primary" (click)="display=!display">Toggle display to {{display ? 'false' : 'true'}}</button><br><br> <!-- Create a button which, on click toggles the value of display in the custom directive myUnless --> 
+    <table class="table table-bordered"> <!-- Create a bootstrap table --> 
+    <thead>
+        <tr [ngClass]="{classTableHead:true}"> <!-- Assign an attribute directive ngClass to the table head --> 
+            <th>Name</th>
+    </thead>
+    <tbody>
+        <tr [ngClass]="{classTableBody:true}">Mickey Mouse</tr> <!-- Display the rows irrespective of the display condition  -->
+        <tr [ngClass]="{classTableBody:true}">Scooby Doo</tr>
+        <tr *myUnless="!display" [ngClass]="{classTableBody:true}">Uncle Scrooge</tr><!-- Display the below three table rows only if myUnless directive is set to true  -->
+        <tr *myUnless="!display" [ngClass]="{classTableBody:true}">Daisy Duck</tr>
+        <tr *myUnless="!display" [ngClass]="{classTableBody:true}">Rugrats</tr>
+    </tbody>
+    </table>
+</div>
